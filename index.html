@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="index.css">
+<title>A Fun Night</title>
+</head><body id="tmp">
+
+<div id="test" hidden><div>Get ready!</div><span>0</span><span>0</span><span>0</span><span>0</span></div>
+
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Nov 1, 2018 19:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get todays date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now an the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+var spans = document.getElementById("test").children;
+spans[1].innerHTML = days;
+spans[2].innerHTML = hours;
+spans[3].innerHTML = minutes;
+spans[4].innerHTML = seconds;
+//alert(spans[0].innerHTML);
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("test").innerHTML = "<h2>IT'S TIME!!</h2>";
+    if(document.getElementById("b4") != null){
+      document.getElementById("b4").id = "after";
+    } else {
+      document.getElementById("tmp").id = "after";
+    }
+  } else {
+    if(document.getElementById("tmp") != null){
+      document.getElementById("tmp").id = "b4";
+    }
+  }
+document.getElementById("test").removeAttribute("hidden");
+}, 1000);
+
+</script>
+
+</body></html>
